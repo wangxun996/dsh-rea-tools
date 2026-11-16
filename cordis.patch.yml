@@ -1,0 +1,21 @@
+# dsh bundle layer: mount REA (morluto/rea) as an in-process DSH tool set.
+#
+# The plugin owns one MCP stdio session to `rea-agents mcp`, registers 16
+# curated REA tools with their own JSON Schemas (rea_open_binary, …) and
+# exposes rea_tools / rea_call to reach the remaining tools of the 255 catalog.
+#
+# Optional host-specific engine environment, e.g. an analysis engine that REA
+# discovers through its own variables:
+#
+#   engineEnv:
+#     GHIDRA_INSTALL_DIR: /opt/ghidra_12.1.4_PUBLIC
+#     JAVA_HOME: /usr/lib/jvm/java-21-openjdk-arm64
+#     RIZIN_COMMAND: /usr/local/bin/rizin
+#
+- insert:
+    - id: rea
+      name: dsh-rea-tools
+      config:
+        toolPrefix: rea_
+        toolCallTimeoutMs: 240000
+        directTools: default

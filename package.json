@@ -1,0 +1,53 @@
+{
+  "name": "dsh-rea-tools",
+  "version": "0.1.0",
+  "description": "REA (Reverse Engineer Anything) tools for DeepSeek Harness: mounts the rea-agents MCP engine and exposes 16 curated rea_* tools plus a rea_tools/rea_call gateway over all 255.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.12.1"
+  },
+  "dependencies": {
+    "rea-agents": "6.9.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "rea",
+    "mcp",
+    "reverse-engineering",
+    "ghidra",
+    "rizin",
+    "frida",
+    "jadx"
+  ],
+  "license": "MIT",
+  "author": "YG",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangxun996/dsh-rea-tools.git"
+  },
+  "homepage": "https://github.com/wangxun996/dsh-rea-tools#readme",
+  "bugs": {
+    "url": "https://github.com/wangxun996/dsh-rea-tools/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,10 @@
+# 目标位置：awesome-dsh-plugin/awesome-dsh-plugin 仓库
+#   data/plugins/wangxun996__dsh-rea-tools.yml
+# 文件名与 url 必须与仓库完全一致。
+url: https://github.com/wangxun996/dsh-rea-tools
+name: wangxun996/dsh-rea-tools
+category: tools
+description:
+  en: "Runs the REA reverse-engineering engine (rea-agents) as an MCP server over stdio and registers 16 of its tools — open_binary, procedure_pseudo_code, search_strings, inspect_artifact, inspect_web_page and others — plus rea_tools/rea_call gateways that reach the remaining 239 tools of its 255-tool catalog."
+  zh: "以 stdio 方式运行 REA 逆向引擎（rea-agents）并注册其中 16 个工具——open_binary、procedure_pseudo_code、search_strings、inspect_artifact、inspect_web_page 等——另加 rea_tools/rea_call 两个网关，可调用其 255 个工具里剩下的 239 个。"
+# icon: https://raw.githubusercontent.com/wangxun996/dsh-rea-tools/main/assets/icon-180.png
