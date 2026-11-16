@@ -1,0 +1,34 @@
+name: publish
+
+# Publishing needs an npm token once, as a repository secret:
+#   Settings → Secrets and variables → Actions → New repository secret
+#   Name: NPM_TOKEN   Value: npm Automation/Granular token with publish rights
+# Then `git tag v0.1.0 && git push --tags` publishes this version.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Verify the package is installable as a dsh bundle
+        run: |
+          node --check lib/index.js
+          node --check lib/bridge.js
+          node -e "const p=require('./package.json');if(!p.dsh?.bundle?.patch)throw new Error('missing dsh.bundle.patch');if(p.private)throw new Error('package is private')"
+          npm pack --dry-run
+      - name: Publish
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
